@@ -59,7 +59,7 @@ The following is a list of design considerations when it comes to storage in AKS
 * For Azure Files:
   * In case performance is critical, the premium tier is recommended.
   * Have dedicated storage accounts for your file shares.
-  * Consider carefully whether you want Kubernetes to create the file shares or if you want to create them statically yourself. How should we consider this?
+  * Consider carefully whether you want Kubernetes to create the file shares or if you want to create them statically outside of Kubernetes.
 * For Azure Blob:
   * Use an application-level SDK to interface with blob storage.
   * Leverage AAD-integrated authorization for blob storage. Avoid using the shared storage account key.
