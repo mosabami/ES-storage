@@ -10,13 +10,13 @@ Picking the right storage solution can be hard, and will require some testing on
 * For high performance storage that is going to be used by a database platform running on Kubernetes, leverage disks. Consider using either premium or ultra disks for the best performance.
 * For unstructured data like photos, videos and text documents leverage blob storage. Consider reading/writing to blob directly from within your application.
 * For shared configuration data with limited performance requirement, leverage Azure Files standard.
-* For shared application data with high performance requirements, leverage either Azure Files premium or Azure NetApp Files. Ensure your instance has sufficient network bandwidth to handle application requests and storage requests (given SMB or NFS traffic goes over the network stack).
+* For shared application data with high performance requirements, leverage either Azure Files premium or Azure NetApp Files. Ensure your nodes have sufficient network bandwidth to handle application requests and storage requests (given SMB or NFS traffic goes over the network stack).
    
 # Design considerations
 The following is a list of design considerations when it comes to storage in AKS. Consider where storage is required in your AKS environment, and determine the best solution for each requirement.
 
 * **Operating system disks**: Each virtual machine (VM) in Azure requires a disk for its operating system. Given Kubernetes nodes are ephemeral, AKS defaults to using [ephemeral OS drives](https://docs.microsoft.com/en-us/azure/aks/cluster-configuration#ephemeral-os) on supported VM sizes.
-  * If required, it is possible to use regular managed disks instead for the nodes in your AKS cluster, in case you need to persist certain data that you store on the OS drive.
+  * If required, it is possible to use regular managed disks instead for the nodes in your AKS cluster, in case you need to persist certain data that you store on the OS drive. 
   * If you select a [managed disk](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types) as the operating system disk, ensure it is sized appropriately to support the requirements of the operating system, kubernetes system and your workload. 
 * **Application data**: Some applications need a consistent data store to store application data. If a database is required, consider exploring the managed database options in Azure such as [Azure SQL](https://azure.microsoft.com/en-us/products/azure-sql/), [Azure Database by MySQL](https://azure.microsoft.com/en-us/services/mysql/), [Azure Database for PostGres](https://azure.microsoft.com/en-us/services/postgresql/) or [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/).
 * **Storage solutions in AKS**: If a managed database doesn't meet your application needs, AKS has multiple storage options available to store consistent data:
