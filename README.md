@@ -1,4 +1,4 @@
-# ES-storage
+# Storage considerations for AKS
 
 Kubernetes can be used for both stateless and stateful workloads. Stateful workloads need a storage solution to store their state onto. Within the Azure Kubernetes Service (AKS) multiple storage solutions exist. Picking the right solution for your storage needs can be a challenge, and the goal of this document is to provide you with guidance in making the right choice.
 
